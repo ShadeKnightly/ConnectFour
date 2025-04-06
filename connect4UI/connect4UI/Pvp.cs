@@ -5,12 +5,13 @@ using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using connect4UI.Properties;
 
 
 namespace connect4UI
@@ -30,6 +31,7 @@ namespace connect4UI
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             // Initialize the board with your buttons (row 0 is top, row 5 is bottom)
             board[0, 0] = Col0Row0;
             board[1, 0] = Col0Row1;
@@ -106,7 +108,7 @@ namespace connect4UI
             Col5Btn.Click += ColumnButton_Click;
             Col6Btn.Click += ColumnButton_Click;
 
-
+            StartGame();
         }
 
         private void GameBoard_Paint(object sender, PaintEventArgs e)
@@ -114,8 +116,24 @@ namespace connect4UI
 
         }
 
-
-
+        private void StartGame()
+        {
+            int randomPlayer = RandomNumberGenerator();
+            Player player1, player2;
+            if (randomPlayer == 0)
+            {
+                player1 = new RedPlayer("Red Player", Color.Red, 0);
+                MessageBox.Show("Red goes first!");
+                player2 = new YellowPlayer("Yellow Player", Color.Yellow, 0);
+            }
+            else
+            {
+                player1 = new YellowPlayer("Yellow Player", Color.Yellow, 0);
+                MessageBox.Show("Yellow goes first!");
+                player2 = new RedPlayer("Red Player", Color.Red, 0);
+            }
+            _currentPlayerColor = player1.TokenColor;
+        }
 
         private void ColumnButton_Click(object sender, EventArgs e)
         {
@@ -219,25 +237,27 @@ namespace connect4UI
         private bool CheckDiagonalWin()
         {
             // Check for diagonal wins (both directions)
-            for (int row = 0; row < 3; row++)
+            for (int row = 0; row <= 5; row++)
             {
-                for (int col = 0; col < 4; col++)
+                for (int col = 0; col <=6 ; col++)
                 {
                     // Check diagonal down-right
-                    if (board[row, col].BackColor == _currentPlayerColor &&
+                    if (row <= 2 && col <= 3 &&
+                        board[row, col].BackColor == _currentPlayerColor &&
                         board[row + 1, col + 1].BackColor == _currentPlayerColor &&
                         board[row + 2, col + 2].BackColor == _currentPlayerColor &&
                         board[row + 3, col + 3].BackColor == _currentPlayerColor)
+
                     {
                         return true;
                     }
 
                     // Check diagonal down-left
-                    if (col >= 3 &&
+                    if (row <= 2 && col >= 3 &&
                         board[row, col].BackColor == _currentPlayerColor &&
                         board[row + 1, col - 1].BackColor == _currentPlayerColor &&
                         board[row + 2, col - 2].BackColor == _currentPlayerColor &&
-                        board[row + 3, col - 3].BackColor == _currentPlayerColor)
+                        board[row + 3, col - 3].BackColor == _currentPlayerColor) 
                     {
                         return true;
                     }
@@ -274,21 +294,21 @@ namespace connect4UI
 
         }
 
-        public class Player1 : Player
+        public class RedPlayer : Player
         {
-            public Player1(string name, Color tokenColor, int score) : base(name, tokenColor, score)
+            public RedPlayer(string name, Color tokenColor, int score) : base(name, tokenColor, score)
             {
-                Name = "Player 1";
+                Name = "Red Player";
                 TokenColor = Color.Red;
                 Score = 0;
             }
         }
 
-        public class Player2 : Player
+        public class YellowPlayer : Player
         {
-            public Player2(string name, Color tokenColor, int score) : base(name, tokenColor, score)
+            public YellowPlayer(string name, Color tokenColor, int score) : base(name, tokenColor, score)
             {
-                Name = "Player 1";
+                Name = "Yellow Player";
                 TokenColor = Color.Yellow;
                 Score = 0;
             }
@@ -296,13 +316,16 @@ namespace connect4UI
 
         private int RandomNumberGenerator()
         {
-            // Random number generator to determine the first player
             Random rnd = new Random();
 
             var num = rnd.Next(2);
 
             return num;
         }
+
+
+
+        
 
 
         private void Col0Row0_Click(object sender, EventArgs e)
@@ -332,21 +355,6 @@ namespace connect4UI
         }
 
         private void Col0Row5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Col3Btn_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Col4Btn_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Col5Btn_Click_1(object sender, EventArgs e)
         {
 
         }
