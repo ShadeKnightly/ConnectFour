@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CircularButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Title.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +103,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\connect4titlebanner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\red-token-pointer.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\yellow-token-pointer.cur" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

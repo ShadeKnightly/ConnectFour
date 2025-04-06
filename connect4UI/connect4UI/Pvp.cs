@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
 namespace connect4UI
 {
 
@@ -18,6 +20,7 @@ namespace connect4UI
     {
         private Button[,] board = new Button[6, 7]; // board array 6 rows, 7 columns
         private Color _currentPlayerColor = Color.Red; // Start with red
+        private bool IsGameOver = false;
 
         public Connect4PvP()
         {
@@ -102,12 +105,17 @@ namespace connect4UI
             Col4Btn.Click += ColumnButton_Click;
             Col5Btn.Click += ColumnButton_Click;
             Col6Btn.Click += ColumnButton_Click;
+
+
         }
 
         private void GameBoard_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+
+
 
         private void ColumnButton_Click(object sender, EventArgs e)
         {
@@ -118,30 +126,133 @@ namespace connect4UI
             // Print out the column number and the rows being checked
             Debug.WriteLine($"Column: {column} clicked");
 
-
-            // Check if the column is full (i.e., the top row has a colored button)
-            if (board[0, column].BackColor != Color.White)
+            // Do not allow more moves if game is over
+            if (IsGameOver) 
             {
-                MessageBox.Show("Column is full! Choose another column.");
-                return; // Exit early if the column is full
+                return;
             }
 
-            // Loop through rows from bottom to top to find the first available spot in the column
-            for (int row = 5; row >= 0; row--)  // row starts from 5 because the bottom row is at index 5
+            // Try to make the move
+            if (!MakeMove(column))
             {
+                MessageBox.Show("Column is full. Choose another column.");
+                return;
+            }
 
+            // Check for a winner
+            if (CheckWin())
+            {
+                MessageBox.Show($"Player {_currentPlayerColor} wins!");
+                IsGameOver = true;
+                return;
+            }
+
+            if (CheckDraw())
+            {
+                MessageBox.Show("It's a draw!");
+                IsGameOver = true;
+                return;
+            }
+
+
+            // If valid move, no winner yet, not even a draw, let other player have a turn
+            _currentPlayerColor = (_currentPlayerColor == Color.Red) ? Color.Yellow : Color.Red;  // Switch players
+        }
+
+        private bool MakeMove(int column)
+        {
+            for (int row = 5; row >= 0; row--) // start from bottom row
+            {
                 Debug.WriteLine($"Checking Row: {row}, Column: {column}, Color: {board[row, column].BackColor}");
-
-                // Check if the button at the current row and column is empty
                 if (board[row, column].BackColor == Color.White)
                 {
                     Debug.WriteLine($"Filling Row: {row}, Column: {column}");
-                    board[row, column].BackColor = _currentPlayerColor;  // Fill the spot
-                    _currentPlayerColor = (_currentPlayerColor == Color.Red) ? Color.Yellow : Color.Red;  // Switch players
-                    break; // Exit the loop once a spot is filled
+                    board[row, column].BackColor = _currentPlayerColor;  // fill the spot
+                    return true;
                 }
-
             }
+            return false; //invalid move; full column
+        }
+
+        private bool CheckWin()
+        {
+            // Check horizontal, vertical, and diagonal directions for a win
+            return CheckHorizontalWin() || CheckVerticalWin() || CheckDiagonalWin();
+        }
+
+        private bool CheckHorizontalWin()
+        {
+            for (int row = 0; row < 6; row++)
+            {
+                for (int col = 0; col < 4; col++) // Only check up to column 4
+                {
+                    if (board[row, col].BackColor == _currentPlayerColor &&
+                        board[row, col + 1].BackColor == _currentPlayerColor &&
+                        board[row, col + 2].BackColor == _currentPlayerColor &&
+                        board[row, col + 3].BackColor == _currentPlayerColor)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private bool CheckVerticalWin()
+        {
+            for (int col = 0; col < 7; col++)
+            {
+                for (int row = 0; row < 3; row++) // Only check up to row 3
+                {
+                    if (board[row, col].BackColor == _currentPlayerColor &&
+                        board[row + 1, col].BackColor == _currentPlayerColor &&
+                        board[row + 2, col].BackColor == _currentPlayerColor &&
+                        board[row + 3, col].BackColor == _currentPlayerColor)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private bool CheckDiagonalWin()
+        {
+            // Check for diagonal wins (both directions)
+            for (int row = 0; row < 3; row++)
+            {
+                for (int col = 0; col < 4; col++)
+                {
+                    // Check diagonal down-right
+                    if (board[row, col].BackColor == _currentPlayerColor &&
+                        board[row + 1, col + 1].BackColor == _currentPlayerColor &&
+                        board[row + 2, col + 2].BackColor == _currentPlayerColor &&
+                        board[row + 3, col + 3].BackColor == _currentPlayerColor)
+                    {
+                        return true;
+                    }
+
+                    // Check diagonal down-left
+                    if (col >= 3 &&
+                        board[row, col].BackColor == _currentPlayerColor &&
+                        board[row + 1, col - 1].BackColor == _currentPlayerColor &&
+                        board[row + 2, col - 2].BackColor == _currentPlayerColor &&
+                        board[row + 3, col - 3].BackColor == _currentPlayerColor)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private bool CheckDraw()
+        {
+            foreach (var cell in board)
+            {
+                if (cell.BackColor == Color.White) return false; //still unplayed slots
+            }
+            return true;
         }
 
 
