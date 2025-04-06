@@ -55,9 +55,7 @@
     <Compile Include="Title.Designer.cs">
       <DependentUpon>Title.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pvp.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Pvp.cs" />
     <Compile Include="Pvp.Designer.cs">
       <DependentUpon>Pvp.cs</DependentUpon>
     </Compile>
@@ -108,9 +106,7 @@
     <Content Include="Resources\red-token-pointer.cur">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\RedToken.png" />
     <Content Include="Resources\yellow-token-pointer.cur" />
-    <Content Include="Resources\YellowToken.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
