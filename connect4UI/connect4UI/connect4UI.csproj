@@ -108,7 +108,9 @@
     <Content Include="Resources\red-token-pointer.cur">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\RedToken.png" />
     <Content Include="Resources\yellow-token-pointer.cur" />
+    <Content Include="Resources\YellowToken.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
