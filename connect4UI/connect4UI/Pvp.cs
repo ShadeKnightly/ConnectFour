@@ -16,55 +16,23 @@ using connect4UI.Properties;
 
 namespace connect4UI
 {
-    public class Player
-    {
-        public string Name;
-        public Color TokenColor;
-        public int Score;
-
-        public Player(string name, Color tokenColor, int score=0)
-        {
-            Name = name;
-            TokenColor = tokenColor;
-            Score = score;
-        }
-
-    }
-
-    public class RedPlayer : Player
-    {
-        public RedPlayer() : base("Red Player", Color.Red)
-        {
-        }
-    }
-
-    public class YellowPlayer : Player
-    {
-        public YellowPlayer() : base("Yellow Player", Color.Yellow)
-        {
-        }
-    }
-
-
 
 
     public partial class Connect4PvP : Form
     {
         private Button[,] board = new Button[6, 7]; // board array 6 rows, 7 columns
-        //private Color _currentPlayerColor = Color.Red; // Start with red
         private bool IsGameOver = false;
         private Player currentPlayer, player1, player2; 
 
         public Connect4PvP()
         {
             InitializeComponent();
-            this.Load += Form1_Load;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            // Initialize the board with your buttons (row 0 is top, row 5 is bottom)
+            // initialize the board with buttons (row 0 is top, row 5 is bottom)
             for (int row = 0; row < 6; row++)
             {
                 for (int col = 0; col < 7; col++)
@@ -75,15 +43,18 @@ namespace connect4UI
 
             foreach (var button in new[] { Col0Btn, Col1Btn, Col2Btn, Col3Btn, Col4Btn, Col5Btn, Col6Btn })
             {
-                // Attach event handlers only once in this initialization step
-                button.Click -= ColumnButton_Click;// Unsubscribe just in case it's subscribed multiple times
+                button.Click -= ColumnButton_Click;// unsubscribe just in case it's subscribed multiple times
                 button.Click += ColumnButton_Click;
 
-                // Tag buttons so we know which column each belongs to
+                // tag buttons to coordinate with column number
                 button.Tag = Array.IndexOf(new[] { Col0Btn, Col1Btn, Col2Btn, Col3Btn, Col4Btn, Col5Btn, Col6Btn }, button);
             }
 
-            if (currentPlayer == null) CoinToss();
+            if (currentPlayer == null)
+            {
+                CoinToss(); //who plays first
+                if (currentPlayer is AIPlayer) HandleAITurn(); // disable column buttons if AI's turn
+            }
         }
 
         private void GameBoard_Paint(object sender, PaintEventArgs e)
@@ -96,62 +67,118 @@ namespace connect4UI
             int randomPlayer = RandomNumberGenerator();
             if (randomPlayer == 0)
             {
-                player1 = new RedPlayer();
+                player1 = new HumanPlayer("Red Player",Color.Red);
                 MessageBox.Show("Red goes first!");
-                player2 = new YellowPlayer();
+                player2 = new SmartAIPlayer("Yellow Player", Color.Yellow);
             }
             else
             {
-                player1 = new YellowPlayer();
+                //player1 = new AIPlayer("Yellow Player", Color.Yellow);
+                player1 = new SmartAIPlayer("Yellow Player", Color.Yellow);
                 MessageBox.Show("Yellow goes first!");
-                player2 = new RedPlayer();
+                player2 = new HumanPlayer("Red Player", Color.Red);
             }
             currentPlayer = player1;
         }
 
         private void ColumnButton_Click(object sender, EventArgs e)
         {
-            Button clickedButton = (Button)sender;
-            int column = Convert.ToInt32(clickedButton.Tag); // Get the column number
+            
+            int column;
+
+            if (currentPlayer is HumanPlayer)
+            {
+                // get column from the clicked button's tag (human input)
+                Button clickedButton = (Button)sender;
+                column = Convert.ToInt32(clickedButton.Tag);
+                Debug.WriteLine($"Human Player selects column: {column}");
+            }
+            else if (currentPlayer is AIPlayer aiPlayer)
+            {
+                // use AI logic to decide the column
+                column = aiPlayer.MakeMove(board);
+                Debug.WriteLine($"AI selects column: {column}");
+            }
+            else
+            {
+                throw new InvalidOperationException("Unknown player type.");
+            }
 
 
-            // Print out the column number and the rows being checked
-            Debug.WriteLine($"Column: {column} clicked");
-
-            // Do not allow more moves if game is over
+            // do not allow more moves if game is over
             if (IsGameOver) 
             {
                 return;
             }
 
-            // Try to make the move
+            //try to make a move
             if (!MakeMove(column))
             {
                 MessageBox.Show("Column is full. Choose another column.");
                 return;
             }
 
-            // Check for a winner
-            if (CheckWin())
-            {
-                currentPlayer.Score++;
-
-                MessageBox.Show($"{currentPlayer.Name} wins! Current score: {currentPlayer.Score}.");
-                IsGameOver = true;
-                return;
-            }
-
-            if (CheckDraw())
-            {
-                MessageBox.Show("It's a draw!");
-                IsGameOver = true;
-                return;
-            }
+            //check for win or draw
+            if (CheckGameState()) return;
 
 
-            // If valid move, no winner yet, not even a draw, let other player have a turn
+            //switch turn if valid move, no winner yet, not even a draw
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
+
+
+            //branch depending on player class
+            if (currentPlayer is AIPlayer)
+                HandleAITurn(); //let AI run it's playing algorithm
+            else if (currentPlayer is HumanPlayer)
+                SetColumnButtonsEnabled(true); //allow human to click to play
+            else
+                throw new InvalidOperationException("Unknown player type.");
+
         }
+
+        private async void HandleAITurn()
+        {
+            if (currentPlayer is AIPlayer aiPlayer)
+            {
+
+                // do not allow more moves if game is over
+                if (IsGameOver)
+                {
+                    return;
+                }
+
+                SetColumnButtonsEnabled(false); // prevent human from clicking while AI is thinking
+
+                Random random = new Random();
+                int delay = random.Next(800, 1800);
+                await Task.Delay(delay); // simulate AI thinking
+
+                int column = aiPlayer.MakeMove(board); // let AI decide its move
+                Debug.WriteLine($"AI ({currentPlayer.Name}) chooses column {column}.");
+
+                // make the move for the AI
+                if (!MakeMove(column))
+                {
+                    MessageBox.Show("AI attempted an invalid move."); //I don't expect this to happen
+                    return;
+                }
+
+                //check for win or draw
+                if (CheckGameState()) return;
+
+                //switch turn if valid move, no winner yet, not even a draw
+                currentPlayer = (currentPlayer == player1) ? player2 : player1;
+
+                //branch depending on player class
+                if (currentPlayer is AIPlayer)
+                    HandleAITurn(); //let AI run it's playing algorithm
+                else if (currentPlayer is HumanPlayer)
+                    SetColumnButtonsEnabled(true); //allow human to click to play
+                else
+                    throw new InvalidOperationException("Unknown player type.");
+            }
+        }
+
 
         private bool MakeMove(int column)
         {
@@ -168,95 +195,54 @@ namespace connect4UI
             return false; //invalid move; full column
         }
 
+
+        private bool CheckGameState()
+        {
+            
+            if (CheckWin())
+            {
+                currentPlayer.Score++;
+                MessageBox.Show($"{currentPlayer.Name} wins! Current score: {currentPlayer.Score}.");
+                IsGameOver = true;
+                return true;
+            }
+
+            
+            if (CheckDraw())
+            {
+                MessageBox.Show("It's a draw!");
+                IsGameOver = true;
+                return true;
+            }
+
+            return false;
+        }
+
+
         private bool CheckWin()
         {
-            // Check horizontal, vertical, and diagonal directions for a win
-            return CheckHorizontalWin() || CheckVerticalWin() || CheckDiagonalWin();
-        }
+            // please refer to GameLogic static class
+            return GameLogic.CheckWin(board, currentPlayer.TokenColor);
 
-        private bool CheckHorizontalWin()
-        {
-            var currColor = currentPlayer.TokenColor;
-            for (int row = 0; row < 6; row++)
-            {
-                for (int col = 0; col < 4; col++) // Only check up to column 4
-                {
-                    if (board[row, col].BackColor == currColor &&
-                        board[row, col + 1].BackColor == currColor &&
-                        board[row, col + 2].BackColor == currColor &&
-                        board[row, col + 3].BackColor == currColor)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        private bool CheckVerticalWin()
-        {
-            var currColor = currentPlayer.TokenColor;
-            for (int col = 0; col < 7; col++)
-            {
-                for (int row = 0; row < 3; row++) // Only check up to row 3
-                {
-                    if (board[row, col].BackColor == currColor &&
-                        board[row + 1, col].BackColor == currColor &&
-                        board[row + 2, col].BackColor == currColor &&
-                        board[row + 3, col].BackColor == currColor)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        private bool CheckDiagonalWin()
-        {
-            var currColor = currentPlayer.TokenColor;
-            // Check for diagonal wins (both directions)
-            for (int row = 0; row <= 5; row++)
-            {
-                for (int col = 0; col <=6 ; col++)
-                {
-                    // Check diagonal down-right
-                    if (row <= 2 && col <= 3 &&
-                        board[row, col].BackColor == currColor &&
-                        board[row + 1, col + 1].BackColor == currColor &&
-                        board[row + 2, col + 2].BackColor == currColor &&
-                        board[row + 3, col + 3].BackColor == currColor)
-
-                    {
-                        return true;
-                    }
-
-                    // Check diagonal down-left
-                    if (row <= 2 && col >= 3 &&
-                        board[row, col].BackColor == currColor &&
-                        board[row + 1, col - 1].BackColor == currColor &&
-                        board[row + 2, col - 2].BackColor == currColor &&
-                        board[row + 3, col - 3].BackColor == currColor) 
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
         }
 
         private bool CheckDraw()
         {
-            foreach (var cell in board)
+            // please refer to GameLogic static class
+            return GameLogic.CheckDraw(board);
+        }
+
+        private void SetColumnButtonsEnabled(bool isEnabled)
+        {
+            // enable or disable each button
+            foreach (var button in new[] { Col0Btn, Col1Btn, Col2Btn, Col3Btn, Col4Btn, Col5Btn, Col6Btn })
             {
-                if (cell.BackColor == Color.White) return false; //still unplayed slots
+                button.Enabled = isEnabled; 
             }
-            return true;
         }
 
 
 
-        
 
         private int RandomNumberGenerator()
         {
