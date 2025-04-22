@@ -49,6 +49,8 @@
     <Compile Include="CircularButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="GameLogic.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Title.cs">
       <SubType>Form</SubType>
     </Compile>
