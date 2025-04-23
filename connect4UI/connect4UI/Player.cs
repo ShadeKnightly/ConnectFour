@@ -87,20 +87,23 @@ public class SmartAIPlayer : AIPlayer
     {
         for (int row = board.GetLength(0) - 1; row >= 0; row--)
         {
-            if (board[row, column].BackColor == Color.White)
+            if (board[row, column].BackColor == Color.Black)
             {
                 board[row, column].BackColor = color; // simulate move 
                 bool isWinningMove = CheckWin(board, color); //check if it’s a winning move
-                board[row, column].BackColor = Color.White; // undo move and report back result
+                board[row, column].BackColor = Color.Black;
+                ; // undo move and report back result
                 return isWinningMove;
             }
         }
         return false;
     }
 
+
+
     private bool IsValidMove(Button[,] board, int column)
     {
-        return board[0, column].BackColor == Color.White; // make sure column isn’t full
+        return board[0, column].BackColor == Color.Black; // make sure column isn’t full
     }
 
     private int ChooseRandomColumn(Button[,] board)

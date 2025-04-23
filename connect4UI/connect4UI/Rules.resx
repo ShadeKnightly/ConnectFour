@@ -120,21 +120,18 @@
   <data name="RulesTextBox.Text" xml:space="preserve">
     <value>Players: 2
 
-Players choose a color (red or yellow) 
-and take turns dropping a colored disc
-down into a column of the game-board.
+Players choose a color (red or yellow) and take turns dropping a colored disc down into a column of the game-board.
 
 To win:
-A player must have 4 discs of their color,
- vertically, horizontally, or diagonally.
+A player must have 4 in a row of their color, vertically, horizontally, or diagonally.
 
 Tie:
-If no player gets 4 in a row before
-the board is full, the game is a tie.
+If no player gets 4 in a row before the board is full, the game is a tie.
 
 Note: 
-Connect 4 is a solved game, 
-the first player can win every time 
-if played perfectly.  </value>
+Connect 4 is a solved game, the first player can win every time if played perfectly.  </value>
   </data>
+  <metadata name="fileSystemWatcher1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
