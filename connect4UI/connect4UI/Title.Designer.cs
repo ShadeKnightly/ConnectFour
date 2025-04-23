@@ -54,7 +54,7 @@ namespace connect4UI
             this.RulesBtn.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RulesBtn.ForeColor = System.Drawing.SystemColors.Window;
             this.RulesBtn.Location = new System.Drawing.Point(708, 123);
-            this.RulesBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.RulesBtn.Margin = new System.Windows.Forms.Padding(0);
             this.RulesBtn.Name = "RulesBtn";
             this.RulesBtn.Size = new System.Drawing.Size(290, 63);
             this.RulesBtn.TabIndex = 2;
@@ -71,7 +71,7 @@ namespace connect4UI
             this.PvPStartBtn.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PvPStartBtn.ForeColor = System.Drawing.SystemColors.Desktop;
             this.PvPStartBtn.Location = new System.Drawing.Point(0, 13);
-            this.PvPStartBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.PvPStartBtn.Margin = new System.Windows.Forms.Padding(0);
             this.PvPStartBtn.Name = "PvPStartBtn";
             this.PvPStartBtn.Size = new System.Drawing.Size(358, 77);
             this.PvPStartBtn.TabIndex = 3;
@@ -88,7 +88,7 @@ namespace connect4UI
             this.CreditsBtn.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreditsBtn.ForeColor = System.Drawing.SystemColors.Window;
             this.CreditsBtn.Location = new System.Drawing.Point(708, 221);
-            this.CreditsBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.CreditsBtn.Margin = new System.Windows.Forms.Padding(0);
             this.CreditsBtn.Name = "CreditsBtn";
             this.CreditsBtn.Size = new System.Drawing.Size(290, 65);
             this.CreditsBtn.TabIndex = 4;
@@ -141,12 +141,13 @@ namespace connect4UI
             this.HardAiStartBtn.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HardAiStartBtn.ForeColor = System.Drawing.SystemColors.Desktop;
             this.HardAiStartBtn.Location = new System.Drawing.Point(0, 214);
-            this.HardAiStartBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.HardAiStartBtn.Margin = new System.Windows.Forms.Padding(0);
             this.HardAiStartBtn.Name = "HardAiStartBtn";
             this.HardAiStartBtn.Size = new System.Drawing.Size(358, 80);
             this.HardAiStartBtn.TabIndex = 8;
             this.HardAiStartBtn.Text = "Hard AI";
             this.HardAiStartBtn.UseVisualStyleBackColor = false;
+            this.HardAiStartBtn.Click += new System.EventHandler(this.HardAiStartBtn_Click);
             // 
             // EasyAiStartBtn
             // 
@@ -157,12 +158,13 @@ namespace connect4UI
             this.EasyAiStartBtn.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EasyAiStartBtn.ForeColor = System.Drawing.SystemColors.Desktop;
             this.EasyAiStartBtn.Location = new System.Drawing.Point(0, 113);
-            this.EasyAiStartBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.EasyAiStartBtn.Margin = new System.Windows.Forms.Padding(0);
             this.EasyAiStartBtn.Name = "EasyAiStartBtn";
             this.EasyAiStartBtn.Size = new System.Drawing.Size(358, 83);
             this.EasyAiStartBtn.TabIndex = 9;
             this.EasyAiStartBtn.Text = "Easy AI";
             this.EasyAiStartBtn.UseVisualStyleBackColor = false;
+            this.EasyAiStartBtn.Click += new System.EventHandler(this.EasyAiStartBtn_Click);
             // 
             // flowLayoutPanel2
             // 

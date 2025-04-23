@@ -22,11 +22,16 @@ namespace connect4UI
     {
         private Button[,] board = new Button[6, 7]; // board array 6 rows, 7 columns
         private bool IsGameOver = false;
-        private Player currentPlayer, player1, player2; 
+        private Player currentPlayer, player1, player2;
 
-        public Connect4PvP()
+        private Form titleForm;
+
+        // Constructor to accept Title form reference
+        public Connect4PvP(Form titleForm)
         {
             InitializeComponent();
+            this.titleForm = titleForm;
+            this.FormClosing += Connect4PvP_FormClosing;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -253,11 +258,6 @@ namespace connect4UI
             return num;
         }
 
-
-
-        
-
-
         private void Col0Row0_Click(object sender, EventArgs e)
         {
 
@@ -282,6 +282,21 @@ namespace connect4UI
         private void Col6Row3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Connect4PvP_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            titleForm.Show(); 
         }
 
         private void Col0Row4_Click(object sender, EventArgs e)
