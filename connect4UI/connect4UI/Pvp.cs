@@ -185,7 +185,7 @@ namespace connect4UI
             for (int row = 5; row >= 0; row--) // start from bottom row
             {
                 Debug.WriteLine($"Checking Row: {row}, Column: {column}, Color: {board[row, column].BackColor}");
-                if (board[row, column].BackColor == Color.White)
+                if (board[row, column].BackColor == Color.Black)
                 {
                     Debug.WriteLine($"Filling Row: {row}, Column: {column}");
                     board[row, column].BackColor = currentPlayer.TokenColor;  // fill the spot
@@ -275,6 +275,11 @@ namespace connect4UI
         }
 
         private void Col0Row3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Col6Row3_Click(object sender, EventArgs e)
         {
 
         }

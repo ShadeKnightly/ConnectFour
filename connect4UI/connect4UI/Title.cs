@@ -62,5 +62,25 @@ namespace connect4UI
         {
 
         }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lblCredits_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
