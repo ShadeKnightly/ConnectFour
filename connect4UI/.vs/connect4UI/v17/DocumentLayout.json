@@ -7,11 +7,11 @@
       "RelativeMoniker": "D:0:0:{D9E94BCE-857F-493E-89B7-829972CD16BE}|connect4UI\\connect4UI.csproj|solutionrelative:connect4ui\\pvp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9E94BCE-857F-493E-89B7-829972CD16BE}|connect4UI\\connect4UI.csproj|c:\\users\\dreil\\onedrive - bow valley college\\sodv1202\\visualstudio\\connectfour\\connect4ui\\connect4ui\\title.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D9E94BCE-857F-493E-89B7-829972CD16BE}|connect4UI\\connect4UI.csproj|C:\\Users\\dreil\\OneDrive - Bow Valley College\\SODV1202\\VisualStudio\\ConnectFour\\connect4UI\\connect4ui\\title.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9E94BCE-857F-493E-89B7-829972CD16BE}|connect4UI\\connect4UI.csproj|solutionrelative:connect4ui\\title.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9E94BCE-857F-493E-89B7-829972CD16BE}|connect4UI\\connect4UI.csproj|c:\\users\\dreil\\onedrive - bow valley college\\sodv1202\\visualstudio\\connectfour\\connect4ui\\connect4ui\\title.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{D9E94BCE-857F-493E-89B7-829972CD16BE}|connect4UI\\connect4UI.csproj|C:\\Users\\dreil\\OneDrive - Bow Valley College\\SODV1202\\VisualStudio\\ConnectFour\\connect4UI\\connect4ui\\title.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{D9E94BCE-857F-493E-89B7-829972CD16BE}|connect4UI\\connect4UI.csproj|solutionrelative:connect4ui\\title.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "connect4UI\\Pvp.cs",
               "ToolTip": "C:\\Users\\dreil\\OneDrive - Bow Valley College\\SODV1202\\VisualStudio\\ConnectFour\\connect4UI\\connect4UI\\Pvp.cs",
               "RelativeToolTip": "connect4UI\\Pvp.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAywB8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAawHQAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-23T04:45:18.517Z",
               "EditorCaption": ""
@@ -51,8 +51,7 @@
               "RelativeToolTip": "connect4UI\\Title.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T04:43:43.449Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-23T04:43:43.449Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "ToolTip": "C:\\Users\\dreil\\OneDrive - Bow Valley College\\SODV1202\\VisualStudio\\ConnectFour\\connect4UI\\connect4UI\\Title.cs [Design]",
               "RelativeToolTip": "connect4UI\\Title.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-23T04:43:15.279Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-04-23T04:43:15.279Z"
             }
           ]
         }

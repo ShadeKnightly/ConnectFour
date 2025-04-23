@@ -101,17 +101,20 @@ namespace connect4UI
                 {
                     case 0:
                         player2 = new HumanPlayer("Yellow Player", Color.Yellow);
+                        strGameMode = "Human v Human";
                         break;
                     case 1:
                         player2 = new AIPlayer("Yellow Player", Color.Yellow);
+                        strGameMode = "Human v Easy AI";
                         break;
                     case 2:
                         player2 = new SmartAIPlayer("Yellow Player", Color.Yellow);
+                        strGameMode = "Human v Hard AI";
                         break;
                     default:
                         throw new ArgumentException("Invalid game mode specified.");
                 }
-                MessageBox.Show("Yellow goes first!");
+                MessageBox.Show("Yellow goes first! " + strGameMode);
                 player2 = new HumanPlayer("Red Player", Color.Red);
             }
             currentPlayer = player1;
