@@ -15,6 +15,10 @@ namespace connect4UI
         public Title()
         {
             InitializeComponent();
+            PvPStartBtn.Tag = 0; //human v human
+            EasyAiStartBtn.Tag = 1; // human v easy ai
+            HardAiStartBtn.Tag = 2; // human v hard ai
+
         }
 
 
@@ -34,9 +38,19 @@ namespace connect4UI
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            Connect4PvP form2 = new Connect4PvP();
-            form2.Show();
-            this.Hide(); // Hide the current form
+            Button clickedButton = sender as Button;
+
+            if (clickedButton?.Tag is int gameMode)
+            {
+                Connect4PvP form2 = new Connect4PvP(gameMode);
+                form2.Show();
+                this.Hide(); // Hide the current form
+            }
+            else
+            {
+                MessageBox.Show("Unknown game mode selected!");
+            }
+
         }
 
         private void CreditsBtn_Click(object sender, EventArgs e)

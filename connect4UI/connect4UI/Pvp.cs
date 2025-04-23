@@ -23,10 +23,12 @@ namespace connect4UI
         private Button[,] board = new Button[6, 7]; // board array 6 rows, 7 columns
         private bool IsGameOver = false;
         private Player currentPlayer, player1, player2; 
+        private int gameMode = 0;
 
-        public Connect4PvP()
+        public Connect4PvP(int gamemode)
         {
             InitializeComponent();
+            this.gameMode = gamemode;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,6 +43,8 @@ namespace connect4UI
                 }
             }
 
+            
+
             foreach (var button in new[] { Col0Btn, Col1Btn, Col2Btn, Col3Btn, Col4Btn, Col5Btn, Col6Btn })
             {
                 button.Click -= ColumnButton_Click;// unsubscribe just in case it's subscribed multiple times
@@ -52,7 +56,7 @@ namespace connect4UI
 
             if (currentPlayer == null)
             {
-                CoinToss(); //who plays first
+                CoinToss(0); //who plays first
                 if (currentPlayer is AIPlayer) HandleAITurn(); // disable column buttons if AI's turn
             }
         }
@@ -62,19 +66,51 @@ namespace connect4UI
 
         }
 
-        private void CoinToss()
+        private void CoinToss(int gametype)
         {
             int randomPlayer = RandomNumberGenerator();
+            string strGameMode = "";
+
             if (randomPlayer == 0)
             {
                 player1 = new HumanPlayer("Red Player",Color.Red);
-                MessageBox.Show("Red goes first!");
-                player2 = new SmartAIPlayer("Yellow Player", Color.Yellow);
+                switch (gameMode)
+                {
+                    case 0:
+                        player2 = new HumanPlayer("Yellow Player", Color.Yellow);
+                        strGameMode = "Human v Human";
+                        break;
+                    case 1:
+                        player2 = new AIPlayer("Yellow Player", Color.Yellow);
+                        strGameMode = "Human v Easy AI";
+                        break;
+                    case 2:
+                        player2 = new SmartAIPlayer("Yellow Player", Color.Yellow);
+                        strGameMode = "Human v Hard AI";
+                        break;
+                    default:
+                        throw new ArgumentException("Invalid game mode specified.");
+                }
+                MessageBox.Show("Red goes first! " + strGameMode);
+                
+                
             }
             else
             {
-                //player1 = new AIPlayer("Yellow Player", Color.Yellow);
-                player1 = new SmartAIPlayer("Yellow Player", Color.Yellow);
+                switch (gameMode)
+                {
+                    case 0:
+                        player2 = new HumanPlayer("Yellow Player", Color.Yellow);
+                        break;
+                    case 1:
+                        player2 = new AIPlayer("Yellow Player", Color.Yellow);
+                        break;
+                    case 2:
+                        player2 = new SmartAIPlayer("Yellow Player", Color.Yellow);
+                        break;
+                    default:
+                        throw new ArgumentException("Invalid game mode specified.");
+                }
                 MessageBox.Show("Yellow goes first!");
                 player2 = new HumanPlayer("Red Player", Color.Red);
             }
