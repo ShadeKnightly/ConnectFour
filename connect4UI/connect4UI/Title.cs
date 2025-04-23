@@ -53,7 +53,14 @@ namespace connect4UI
          
         }
 
+      
+
         private void Form2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
@@ -67,6 +74,16 @@ namespace connect4UI
         {
 
         }
+
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void lblCredits_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void EasyAiStartBtn_Click(object sender, EventArgs e)
         {

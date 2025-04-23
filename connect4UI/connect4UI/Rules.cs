@@ -32,11 +32,19 @@ namespace connect4UI
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void richTextBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
