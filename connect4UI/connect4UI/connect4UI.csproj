@@ -111,6 +111,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\RedToken.png" />
+    <Content Include="Resources\Rules.png" />
     <Content Include="Resources\yellow-token-pointer.cur" />
     <Content Include="Resources\YellowToken.png" />
   </ItemGroup>

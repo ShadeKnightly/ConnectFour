@@ -97,7 +97,7 @@ namespace connect4UI
         {
             foreach (var cell in board)
             {
-                if (cell.BackColor == Color.White) return false; // exit as soon as there is an unplayed slot
+                if (cell.BackColor == Color.Black) return false; // exit as soon as there is an unplayed slot
             }
             return true; // all slots are occupied, therefore a draw
         }

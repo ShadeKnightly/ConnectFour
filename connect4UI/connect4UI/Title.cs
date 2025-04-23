@@ -34,9 +34,9 @@ namespace connect4UI
 
         private void StartBtn_Click(object sender, EventArgs e)
         {
-            Connect4PvP form2 = new Connect4PvP();
+            Connect4PvP form2 = new Connect4PvP(this);
+            this.Hide(); 
             form2.Show();
-            this.Hide(); // Hide the current form
         }
 
         private void CreditsBtn_Click(object sender, EventArgs e)
@@ -53,12 +53,27 @@ namespace connect4UI
          
         }
 
-        private void lblLoadingGame_Click(object sender, EventArgs e)
+        private void Form2(object sender, EventArgs e)
         {
 
         }
 
-        private void Form2(object sender, EventArgs e)
+        private void lblCredits_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void EasyAiStartBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HardAiStartBtn_Click(object sender, EventArgs e)
         {
 
         }

@@ -31,5 +31,12 @@ namespace connect4UI
         {
 
         }
+
+
+        private void richTextBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
