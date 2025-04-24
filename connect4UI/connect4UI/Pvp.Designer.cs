@@ -29,6 +29,16 @@
         private void InitializeComponent()
         {
             this.GameBoard = new System.Windows.Forms.TableLayoutPanel();
+            this.Col0Btn = new System.Windows.Forms.Button();
+            this.Col1Btn = new System.Windows.Forms.Button();
+            this.Col2Btn = new System.Windows.Forms.Button();
+            this.Col3Btn = new System.Windows.Forms.Button();
+            this.Col4Btn = new System.Windows.Forms.Button();
+            this.Col5Btn = new System.Windows.Forms.Button();
+            this.Col6Btn = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Col6Row0 = new connect4UI.CircularButton();
             this.Col6Row5 = new connect4UI.CircularButton();
             this.Col5Row5 = new connect4UI.CircularButton();
             this.Col4Row5 = new connect4UI.CircularButton();
@@ -62,7 +72,6 @@
             this.Col2Row1 = new connect4UI.CircularButton();
             this.Col1Row1 = new connect4UI.CircularButton();
             this.Col0Row1 = new connect4UI.CircularButton();
-            this.Col6Row0 = new connect4UI.CircularButton();
             this.Col5Row0 = new connect4UI.CircularButton();
             this.Col4Row0 = new connect4UI.CircularButton();
             this.Col3Row0 = new connect4UI.CircularButton();
@@ -71,15 +80,6 @@
             this.Col0Row0 = new connect4UI.CircularButton();
             this.Col2Row4 = new connect4UI.CircularButton();
             this.Col2Row5 = new connect4UI.CircularButton();
-            this.Col0Btn = new System.Windows.Forms.Button();
-            this.Col1Btn = new System.Windows.Forms.Button();
-            this.Col2Btn = new System.Windows.Forms.Button();
-            this.Col3Btn = new System.Windows.Forms.Button();
-            this.Col4Btn = new System.Windows.Forms.Button();
-            this.Col5Btn = new System.Windows.Forms.Button();
-            this.Col6Btn = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.GameBoard.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -139,8 +139,8 @@
             this.GameBoard.Controls.Add(this.Col2Row0, 2, 0);
             this.GameBoard.Controls.Add(this.Col1Row0, 1, 0);
             this.GameBoard.Controls.Add(this.Col0Row0, 0, 0);
-            this.GameBoard.Controls.Add(this.Col2Row4, 2, 5);
-            this.GameBoard.Controls.Add(this.Col2Row5, 2, 4);
+            this.GameBoard.Controls.Add(this.Col2Row4, 2, 4);
+            this.GameBoard.Controls.Add(this.Col2Row5, 2, 5);
             this.GameBoard.Location = new System.Drawing.Point(377, 181);
             this.GameBoard.Margin = new System.Windows.Forms.Padding(120, 0, 120, 0);
             this.GameBoard.Name = "GameBoard";
@@ -156,6 +156,241 @@
             this.GameBoard.Size = new System.Drawing.Size(1143, 973);
             this.GameBoard.TabIndex = 0;
             this.GameBoard.Paint += new System.Windows.Forms.PaintEventHandler(this.GameBoard_Paint);
+            // 
+            // Col0Btn
+            // 
+            this.Col0Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Col0Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Col0Btn.BackColor = System.Drawing.Color.Black;
+            this.Col0Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Col0Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.Col0Btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.Col0Btn.FlatAppearance.BorderSize = 0;
+            this.Col0Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
+            this.Col0Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Col0Btn.ForeColor = System.Drawing.Color.Transparent;
+            this.Col0Btn.Location = new System.Drawing.Point(11, 0);
+            this.Col0Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.Col0Btn.MinimumSize = new System.Drawing.Size(150, 150);
+            this.Col0Btn.Name = "Col0Btn";
+            this.Col0Btn.Padding = new System.Windows.Forms.Padding(15);
+            this.Col0Btn.Size = new System.Drawing.Size(150, 150);
+            this.Col0Btn.TabIndex = 1;
+            this.Col0Btn.Tag = "column0";
+            this.Col0Btn.UseVisualStyleBackColor = false;
+            this.Col0Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
+            this.Col0Btn.Click += new System.EventHandler(this.ColumnButton_Click);
+            this.Col0Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
+            this.Col0Btn.MouseHover += new System.EventHandler(this.MouseColHover);
+            // 
+            // Col1Btn
+            // 
+            this.Col1Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Col1Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Col1Btn.BackColor = System.Drawing.Color.Black;
+            this.Col1Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Col1Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.Col1Btn.FlatAppearance.BorderSize = 0;
+            this.Col1Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
+            this.Col1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Col1Btn.ForeColor = System.Drawing.Color.Transparent;
+            this.Col1Btn.Location = new System.Drawing.Point(172, 0);
+            this.Col1Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.Col1Btn.MinimumSize = new System.Drawing.Size(150, 150);
+            this.Col1Btn.Name = "Col1Btn";
+            this.Col1Btn.Padding = new System.Windows.Forms.Padding(15);
+            this.Col1Btn.Size = new System.Drawing.Size(150, 150);
+            this.Col1Btn.TabIndex = 2;
+            this.Col1Btn.Tag = "column1";
+            this.Col1Btn.UseVisualStyleBackColor = false;
+            this.Col1Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
+            this.Col1Btn.Click += new System.EventHandler(this.ColumnButton_Click);
+            this.Col1Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
+            this.Col1Btn.MouseHover += new System.EventHandler(this.MouseColHover);
+            // 
+            // Col2Btn
+            // 
+            this.Col2Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Col2Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Col2Btn.BackColor = System.Drawing.Color.Black;
+            this.Col2Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Col2Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.Col2Btn.FlatAppearance.BorderSize = 0;
+            this.Col2Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
+            this.Col2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Col2Btn.ForeColor = System.Drawing.Color.Transparent;
+            this.Col2Btn.Location = new System.Drawing.Point(333, 0);
+            this.Col2Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.Col2Btn.MinimumSize = new System.Drawing.Size(150, 150);
+            this.Col2Btn.Name = "Col2Btn";
+            this.Col2Btn.Padding = new System.Windows.Forms.Padding(15);
+            this.Col2Btn.Size = new System.Drawing.Size(150, 150);
+            this.Col2Btn.TabIndex = 3;
+            this.Col2Btn.Tag = "column2";
+            this.Col2Btn.UseVisualStyleBackColor = false;
+            this.Col2Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
+            this.Col2Btn.Click += new System.EventHandler(this.ColumnButton_Click);
+            this.Col2Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
+            this.Col2Btn.MouseHover += new System.EventHandler(this.MouseColHover);
+            // 
+            // Col3Btn
+            // 
+            this.Col3Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Col3Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Col3Btn.BackColor = System.Drawing.Color.Black;
+            this.Col3Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Col3Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.Col3Btn.FlatAppearance.BorderSize = 0;
+            this.Col3Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
+            this.Col3Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Col3Btn.ForeColor = System.Drawing.Color.Transparent;
+            this.Col3Btn.Location = new System.Drawing.Point(494, 0);
+            this.Col3Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.Col3Btn.MinimumSize = new System.Drawing.Size(150, 150);
+            this.Col3Btn.Name = "Col3Btn";
+            this.Col3Btn.Padding = new System.Windows.Forms.Padding(15);
+            this.Col3Btn.Size = new System.Drawing.Size(150, 150);
+            this.Col3Btn.TabIndex = 4;
+            this.Col3Btn.Tag = "column3";
+            this.Col3Btn.UseVisualStyleBackColor = false;
+            this.Col3Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
+            this.Col3Btn.Click += new System.EventHandler(this.ColumnButton_Click);
+            this.Col3Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
+            this.Col3Btn.MouseHover += new System.EventHandler(this.MouseColHover);
+            // 
+            // Col4Btn
+            // 
+            this.Col4Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Col4Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Col4Btn.BackColor = System.Drawing.Color.Black;
+            this.Col4Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Col4Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.Col4Btn.FlatAppearance.BorderSize = 0;
+            this.Col4Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
+            this.Col4Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Col4Btn.ForeColor = System.Drawing.Color.Transparent;
+            this.Col4Btn.Location = new System.Drawing.Point(655, 0);
+            this.Col4Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.Col4Btn.MinimumSize = new System.Drawing.Size(150, 150);
+            this.Col4Btn.Name = "Col4Btn";
+            this.Col4Btn.Padding = new System.Windows.Forms.Padding(15);
+            this.Col4Btn.Size = new System.Drawing.Size(150, 150);
+            this.Col4Btn.TabIndex = 5;
+            this.Col4Btn.Tag = "column4";
+            this.Col4Btn.UseVisualStyleBackColor = false;
+            this.Col4Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
+            this.Col4Btn.Click += new System.EventHandler(this.ColumnButton_Click);
+            this.Col4Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
+            this.Col4Btn.MouseHover += new System.EventHandler(this.MouseColHover);
+            // 
+            // Col5Btn
+            // 
+            this.Col5Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Col5Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Col5Btn.BackColor = System.Drawing.Color.Black;
+            this.Col5Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Col5Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.Col5Btn.FlatAppearance.BorderSize = 0;
+            this.Col5Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
+            this.Col5Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Col5Btn.ForeColor = System.Drawing.Color.Transparent;
+            this.Col5Btn.Location = new System.Drawing.Point(816, 0);
+            this.Col5Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.Col5Btn.MinimumSize = new System.Drawing.Size(150, 150);
+            this.Col5Btn.Name = "Col5Btn";
+            this.Col5Btn.Padding = new System.Windows.Forms.Padding(15);
+            this.Col5Btn.Size = new System.Drawing.Size(150, 150);
+            this.Col5Btn.TabIndex = 6;
+            this.Col5Btn.Tag = "column5";
+            this.Col5Btn.UseVisualStyleBackColor = false;
+            this.Col5Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
+            this.Col5Btn.Click += new System.EventHandler(this.ColumnButton_Click);
+            this.Col5Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
+            this.Col5Btn.MouseHover += new System.EventHandler(this.MouseColHover);
+            // 
+            // Col6Btn
+            // 
+            this.Col6Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Col6Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Col6Btn.BackColor = System.Drawing.Color.Black;
+            this.Col6Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Col6Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
+            this.Col6Btn.FlatAppearance.BorderSize = 0;
+            this.Col6Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
+            this.Col6Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Col6Btn.ForeColor = System.Drawing.Color.Transparent;
+            this.Col6Btn.Location = new System.Drawing.Point(977, 0);
+            this.Col6Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.Col6Btn.MinimumSize = new System.Drawing.Size(150, 150);
+            this.Col6Btn.Name = "Col6Btn";
+            this.Col6Btn.Padding = new System.Windows.Forms.Padding(15);
+            this.Col6Btn.Size = new System.Drawing.Size(150, 150);
+            this.Col6Btn.TabIndex = 7;
+            this.Col6Btn.Tag = "column6";
+            this.Col6Btn.UseVisualStyleBackColor = false;
+            this.Col6Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
+            this.Col6Btn.Click += new System.EventHandler(this.ColumnButton_Click);
+            this.Col6Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
+            this.Col6Btn.MouseHover += new System.EventHandler(this.MouseColHover);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.Controls.Add(this.Col0Btn);
+            this.flowLayoutPanel1.Controls.Add(this.Col1Btn);
+            this.flowLayoutPanel1.Controls.Add(this.Col2Btn);
+            this.flowLayoutPanel1.Controls.Add(this.Col3Btn);
+            this.flowLayoutPanel1.Controls.Add(this.Col4Btn);
+            this.flowLayoutPanel1.Controls.Add(this.Col5Btn);
+            this.flowLayoutPanel1.Controls.Add(this.Col6Btn);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(380, 10);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1138, 171);
+            this.flowLayoutPanel1.TabIndex = 8;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.GameBoard, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.ForeColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.96479F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.03521F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1898, 1164);
+            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // Col6Row0
+            // 
+            this.Col6Row0.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Col6Row0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Col6Row0.BackColor = System.Drawing.Color.Black;
+            this.Col6Row0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Col6Row0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Col6Row0.ForeColor = System.Drawing.Color.Transparent;
+            this.Col6Row0.Location = new System.Drawing.Point(965, 22);
+            this.Col6Row0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Col6Row0.MinimumSize = new System.Drawing.Size(150, 150);
+            this.Col6Row0.Name = "Col6Row0";
+            this.Col6Row0.Size = new System.Drawing.Size(155, 151);
+            this.Col6Row0.TabIndex = 7;
+            this.Col6Row0.UseVisualStyleBackColor = false;
             // 
             // Col6Row5
             // 
@@ -747,24 +982,6 @@
             this.Col0Row1.TabIndex = 8;
             this.Col0Row1.UseVisualStyleBackColor = false;
             // 
-            // Col6Row0
-            // 
-            this.Col6Row0.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Col6Row0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Col6Row0.BackColor = System.Drawing.Color.Black;
-            this.Col6Row0.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Col6Row0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Col6Row0.ForeColor = System.Drawing.Color.Transparent;
-            this.Col6Row0.Location = new System.Drawing.Point(965, 22);
-            this.Col6Row0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Col6Row0.MinimumSize = new System.Drawing.Size(150, 150);
-            this.Col6Row0.Name = "Col6Row0";
-            this.Col6Row0.Size = new System.Drawing.Size(155, 151);
-            this.Col6Row0.TabIndex = 7;
-            this.Col6Row0.UseVisualStyleBackColor = false;
-            // 
             // Col5Row0
             // 
             this.Col5Row0.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -882,11 +1099,11 @@
             this.Col2Row4.BackColor = System.Drawing.Color.Black;
             this.Col2Row4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Col2Row4.ForeColor = System.Drawing.Color.Transparent;
-            this.Col2Row4.Location = new System.Drawing.Point(337, 797);
+            this.Col2Row4.Location = new System.Drawing.Point(337, 642);
             this.Col2Row4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Col2Row4.MinimumSize = new System.Drawing.Size(114, 100);
             this.Col2Row4.Name = "Col2Row4";
-            this.Col2Row4.Size = new System.Drawing.Size(151, 154);
+            this.Col2Row4.Size = new System.Drawing.Size(151, 151);
             this.Col2Row4.TabIndex = 31;
             this.Col2Row4.UseVisualStyleBackColor = false;
             // 
@@ -900,230 +1117,13 @@
             this.Col2Row5.BackColor = System.Drawing.Color.Black;
             this.Col2Row5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Col2Row5.ForeColor = System.Drawing.Color.Transparent;
-            this.Col2Row5.Location = new System.Drawing.Point(337, 642);
+            this.Col2Row5.Location = new System.Drawing.Point(337, 797);
             this.Col2Row5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Col2Row5.MinimumSize = new System.Drawing.Size(114, 100);
             this.Col2Row5.Name = "Col2Row5";
-            this.Col2Row5.Size = new System.Drawing.Size(151, 151);
+            this.Col2Row5.Size = new System.Drawing.Size(151, 154);
             this.Col2Row5.TabIndex = 38;
             this.Col2Row5.UseVisualStyleBackColor = false;
-            // 
-            // Col0Btn
-            // 
-            this.Col0Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Col0Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Col0Btn.BackColor = System.Drawing.Color.Black;
-            this.Col0Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Col0Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.Col0Btn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.Col0Btn.FlatAppearance.BorderSize = 0;
-            this.Col0Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
-            this.Col0Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Col0Btn.ForeColor = System.Drawing.Color.Transparent;
-            this.Col0Btn.Location = new System.Drawing.Point(11, 0);
-            this.Col0Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.Col0Btn.MinimumSize = new System.Drawing.Size(150, 150);
-            this.Col0Btn.Name = "Col0Btn";
-            this.Col0Btn.Padding = new System.Windows.Forms.Padding(15);
-            this.Col0Btn.Size = new System.Drawing.Size(150, 150);
-            this.Col0Btn.TabIndex = 1;
-            this.Col0Btn.Tag = "column0";
-            this.Col0Btn.UseVisualStyleBackColor = false;
-            this.Col0Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
-            this.Col0Btn.Click += new System.EventHandler(this.ColumnButton_Click);
-            this.Col0Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
-            this.Col0Btn.MouseHover += new System.EventHandler(this.MouseColHover);
-            // 
-            // Col1Btn
-            // 
-            this.Col1Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Col1Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Col1Btn.BackColor = System.Drawing.Color.Black;
-            this.Col1Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Col1Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.Col1Btn.FlatAppearance.BorderSize = 0;
-            this.Col1Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
-            this.Col1Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Col1Btn.ForeColor = System.Drawing.Color.Transparent;
-            this.Col1Btn.Location = new System.Drawing.Point(172, 0);
-            this.Col1Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.Col1Btn.MinimumSize = new System.Drawing.Size(150, 150);
-            this.Col1Btn.Name = "Col1Btn";
-            this.Col1Btn.Padding = new System.Windows.Forms.Padding(15);
-            this.Col1Btn.Size = new System.Drawing.Size(150, 150);
-            this.Col1Btn.TabIndex = 2;
-            this.Col1Btn.Tag = "column1";
-            this.Col1Btn.UseVisualStyleBackColor = false;
-            this.Col1Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
-            this.Col1Btn.Click += new System.EventHandler(this.ColumnButton_Click);
-            this.Col1Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
-            this.Col1Btn.MouseHover += new System.EventHandler(this.MouseColHover);
-            // 
-            // Col2Btn
-            // 
-            this.Col2Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Col2Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Col2Btn.BackColor = System.Drawing.Color.Black;
-            this.Col2Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Col2Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.Col2Btn.FlatAppearance.BorderSize = 0;
-            this.Col2Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
-            this.Col2Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Col2Btn.ForeColor = System.Drawing.Color.Transparent;
-            this.Col2Btn.Location = new System.Drawing.Point(333, 0);
-            this.Col2Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.Col2Btn.MinimumSize = new System.Drawing.Size(150, 150);
-            this.Col2Btn.Name = "Col2Btn";
-            this.Col2Btn.Padding = new System.Windows.Forms.Padding(15);
-            this.Col2Btn.Size = new System.Drawing.Size(150, 150);
-            this.Col2Btn.TabIndex = 3;
-            this.Col2Btn.Tag = "column2";
-            this.Col2Btn.UseVisualStyleBackColor = false;
-            this.Col2Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
-            this.Col2Btn.Click += new System.EventHandler(this.ColumnButton_Click);
-            this.Col2Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
-            this.Col2Btn.MouseHover += new System.EventHandler(this.MouseColHover);
-            // 
-            // Col3Btn
-            // 
-            this.Col3Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Col3Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Col3Btn.BackColor = System.Drawing.Color.Black;
-            this.Col3Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Col3Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.Col3Btn.FlatAppearance.BorderSize = 0;
-            this.Col3Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
-            this.Col3Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Col3Btn.ForeColor = System.Drawing.Color.Transparent;
-            this.Col3Btn.Location = new System.Drawing.Point(494, 0);
-            this.Col3Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.Col3Btn.MinimumSize = new System.Drawing.Size(150, 150);
-            this.Col3Btn.Name = "Col3Btn";
-            this.Col3Btn.Padding = new System.Windows.Forms.Padding(15);
-            this.Col3Btn.Size = new System.Drawing.Size(150, 150);
-            this.Col3Btn.TabIndex = 4;
-            this.Col3Btn.Tag = "column3";
-            this.Col3Btn.UseVisualStyleBackColor = false;
-            this.Col3Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
-            this.Col3Btn.Click += new System.EventHandler(this.ColumnButton_Click);
-            this.Col3Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
-            this.Col3Btn.MouseHover += new System.EventHandler(this.MouseColHover);
-            // 
-            // Col4Btn
-            // 
-            this.Col4Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Col4Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Col4Btn.BackColor = System.Drawing.Color.Black;
-            this.Col4Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Col4Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.Col4Btn.FlatAppearance.BorderSize = 0;
-            this.Col4Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
-            this.Col4Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Col4Btn.ForeColor = System.Drawing.Color.Transparent;
-            this.Col4Btn.Location = new System.Drawing.Point(655, 0);
-            this.Col4Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.Col4Btn.MinimumSize = new System.Drawing.Size(150, 150);
-            this.Col4Btn.Name = "Col4Btn";
-            this.Col4Btn.Padding = new System.Windows.Forms.Padding(15);
-            this.Col4Btn.Size = new System.Drawing.Size(150, 150);
-            this.Col4Btn.TabIndex = 5;
-            this.Col4Btn.Tag = "column4";
-            this.Col4Btn.UseVisualStyleBackColor = false;
-            this.Col4Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
-            this.Col4Btn.Click += new System.EventHandler(this.ColumnButton_Click);
-            this.Col4Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
-            this.Col4Btn.MouseHover += new System.EventHandler(this.MouseColHover);
-            // 
-            // Col5Btn
-            // 
-            this.Col5Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Col5Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Col5Btn.BackColor = System.Drawing.Color.Black;
-            this.Col5Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Col5Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.Col5Btn.FlatAppearance.BorderSize = 0;
-            this.Col5Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
-            this.Col5Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Col5Btn.ForeColor = System.Drawing.Color.Transparent;
-            this.Col5Btn.Location = new System.Drawing.Point(816, 0);
-            this.Col5Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.Col5Btn.MinimumSize = new System.Drawing.Size(150, 150);
-            this.Col5Btn.Name = "Col5Btn";
-            this.Col5Btn.Padding = new System.Windows.Forms.Padding(15);
-            this.Col5Btn.Size = new System.Drawing.Size(150, 150);
-            this.Col5Btn.TabIndex = 6;
-            this.Col5Btn.Tag = "column5";
-            this.Col5Btn.UseVisualStyleBackColor = false;
-            this.Col5Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
-            this.Col5Btn.Click += new System.EventHandler(this.ColumnButton_Click);
-            this.Col5Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
-            this.Col5Btn.MouseHover += new System.EventHandler(this.MouseColHover);
-            // 
-            // Col6Btn
-            // 
-            this.Col6Btn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Col6Btn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Col6Btn.BackColor = System.Drawing.Color.Black;
-            this.Col6Btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Col6Btn.Cursor = System.Windows.Forms.Cursors.PanSouth;
-            this.Col6Btn.FlatAppearance.BorderSize = 0;
-            this.Col6Btn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowText;
-            this.Col6Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Col6Btn.ForeColor = System.Drawing.Color.Transparent;
-            this.Col6Btn.Location = new System.Drawing.Point(977, 0);
-            this.Col6Btn.Margin = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.Col6Btn.MinimumSize = new System.Drawing.Size(150, 150);
-            this.Col6Btn.Name = "Col6Btn";
-            this.Col6Btn.Padding = new System.Windows.Forms.Padding(15);
-            this.Col6Btn.Size = new System.Drawing.Size(150, 150);
-            this.Col6Btn.TabIndex = 7;
-            this.Col6Btn.Tag = "column6";
-            this.Col6Btn.UseVisualStyleBackColor = false;
-            this.Col6Btn.BackgroundImageChanged += new System.EventHandler(this.BackgroundImageChanged);
-            this.Col6Btn.Click += new System.EventHandler(this.ColumnButton_Click);
-            this.Col6Btn.MouseLeave += new System.EventHandler(this.MouseColLeave);
-            this.Col6Btn.MouseHover += new System.EventHandler(this.MouseColHover);
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.Col0Btn);
-            this.flowLayoutPanel1.Controls.Add(this.Col1Btn);
-            this.flowLayoutPanel1.Controls.Add(this.Col2Btn);
-            this.flowLayoutPanel1.Controls.Add(this.Col3Btn);
-            this.flowLayoutPanel1.Controls.Add(this.Col4Btn);
-            this.flowLayoutPanel1.Controls.Add(this.Col5Btn);
-            this.flowLayoutPanel1.Controls.Add(this.Col6Btn);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(380, 10);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1138, 171);
-            this.flowLayoutPanel1.TabIndex = 8;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Black;
-            this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.GameBoard, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.ForeColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.96479F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.03521F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1898, 1164);
-            this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // Connect4PvP
             // 
