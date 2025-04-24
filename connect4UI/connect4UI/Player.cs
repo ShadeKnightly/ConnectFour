@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using connect4UI;
@@ -20,7 +19,7 @@ public abstract class Player : IPlayer
     public Color TokenColor { get; }
     public int Score { get; set; }
 
-    protected Player(string name, Color col) 
+    protected Player(string name, Color col)
     {
         Name = name;
         TokenColor = col;
@@ -47,9 +46,15 @@ public class AIPlayer : Player
 
     public override int MakeMove(Button[,] board)
     {
-
-        int randomColumn = new Random().Next(7);
-        return randomColumn; // simplest AI move is random pick
+        if (GameLogic.IsBoardEmpty(board))
+        {
+            return 3;
+        }
+        
+        {
+            var randomColumn = new Random().Next(7);
+            return randomColumn; // simplest AI move is random pick
+        }
     }
 }
 
@@ -61,9 +66,11 @@ public class SmartAIPlayer : AIPlayer
 
     public override int MakeMove(Button[,] board)
     {
-        // If it's the first move, go for center
-        if (IsBoardEmpty(board) && IsValidMove(board, 3))
-            return 3;
+
+        if (GameLogic.IsBoardEmpty(board))
+        {
+            return 3; // center column for first move advantage
+        }
 
         // Define opponent color
         Color opponentColor = (TokenColor == Color.Red) ? Color.Yellow : Color.Red;
@@ -121,25 +128,12 @@ public class SmartAIPlayer : AIPlayer
         return column;
     }
 
-    //check for first move advantage 
-    private bool IsBoardEmpty(Button[,] board)
-    {
-        for (int row = 0; row < board.GetLength(0); row++)
-        {
-            for (int col = 0; col < board.GetLength(1); col++)
-            {
-                if (board[row, col].BackColor != Color.Black)
-                    return false;
-            }
-        }
-        return true;
-    }
 
-private bool CheckWin(Button[,] board, Color color)
+
+    private bool CheckWin(Button[,] board, Color color)
     {
         return GameLogic.CheckWin(board, color);
     }
 }
-
 
 

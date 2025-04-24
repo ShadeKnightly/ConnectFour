@@ -31,6 +31,7 @@ namespace connect4UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Title));
             this.RulesBtn = new System.Windows.Forms.Button();
             this.PvPStartBtn = new System.Windows.Forms.Button();
             this.CreditsBtn = new System.Windows.Forms.Button();
@@ -147,7 +148,7 @@ namespace connect4UI
             this.HardAiStartBtn.TabIndex = 8;
             this.HardAiStartBtn.Text = "Hard AI";
             this.HardAiStartBtn.UseVisualStyleBackColor = false;
-            this.HardAiStartBtn.Click += new System.EventHandler(this.HardAiStartBtn_Click);
+            this.HardAiStartBtn.Click += new System.EventHandler(this.StartBtn_Click);
             // 
             // EasyAiStartBtn
             // 
@@ -164,7 +165,7 @@ namespace connect4UI
             this.EasyAiStartBtn.TabIndex = 9;
             this.EasyAiStartBtn.Text = "Easy AI";
             this.EasyAiStartBtn.UseVisualStyleBackColor = false;
-            this.EasyAiStartBtn.Click += new System.EventHandler(this.EasyAiStartBtn_Click);
+            this.EasyAiStartBtn.Click += new System.EventHandler(this.StartBtn_Click);
             // 
             // flowLayoutPanel2
             // 
@@ -201,7 +202,7 @@ namespace connect4UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Navy;
-            this.BackgroundImage = global::connect4UI.Properties.Resources.connect4titlebanner;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -223,6 +224,11 @@ namespace connect4UI
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void lblCredits_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
 

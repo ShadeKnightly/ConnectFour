@@ -9,6 +9,19 @@ namespace connect4UI
         //AL - these functions need parameter for the board and color
         //since they moved to a static class from originally being inside pvp
         //they do not have access to the board and color in pvp
+        public static bool IsBoardEmpty(Button[,] board)
+        {
+            for (var row = 0; row < board.GetLength(0); row++)
+            {
+                for (var col = 0; col < board.GetLength(1); col++)
+                {
+                    if (board[row, col].BackColor != Color.Black)
+                        return false;
+                }
+            }
+            return true;
+        }
+
         public static bool CheckWin(Button[,] board, Color color)
         {
             return CheckHorizontalWin(board, color) ||
@@ -101,7 +114,7 @@ namespace connect4UI
             }
             return true; // all slots are occupied, therefore a draw
         }
-        
+
     }
 
 }
