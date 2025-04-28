@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace connect4UI
 {
     public partial class Title : Form
@@ -26,7 +25,7 @@ namespace connect4UI
         // Tick event handler
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Stop(); //If timer is not stopped, timer1_Tick event will be called for every 10 seconds
+            timer1.Stop(); 
             lblCredits.Visible = false;
         }
 
@@ -36,6 +35,7 @@ namespace connect4UI
             Rules form3 = new Rules();
             form3.ShowDialog();
         }
+
         private void StartBtn_Click(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
@@ -44,14 +44,14 @@ namespace connect4UI
             {
                 Connect4PvP form2 = new Connect4PvP(this, gameMode);
                 form2.Show();
-                this.Hide(); // Hide the current form
+                this.Hide(); 
             }
             else
             {
                 MessageBox.Show("Unknown game mode selected!");
             }
-
         }
+
 
         private void CreditsBtn_Click(object sender, EventArgs e)
         {
@@ -74,12 +74,23 @@ namespace connect4UI
 
         }
 
+      
 
+        private void lblCredits_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void flowLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
         {
 
         }
 
+       
+
+        private void flowLayoutPanel2_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

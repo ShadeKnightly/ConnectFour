@@ -31,7 +31,6 @@ namespace connect4UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Title));
             this.RulesBtn = new System.Windows.Forms.Button();
             this.PvPStartBtn = new System.Windows.Forms.Button();
             this.CreditsBtn = new System.Windows.Forms.Button();
@@ -54,10 +53,10 @@ namespace connect4UI
             this.RulesBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RulesBtn.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RulesBtn.ForeColor = System.Drawing.SystemColors.Window;
-            this.RulesBtn.Location = new System.Drawing.Point(708, 123);
+            this.RulesBtn.Location = new System.Drawing.Point(708, 122);
             this.RulesBtn.Margin = new System.Windows.Forms.Padding(0);
             this.RulesBtn.Name = "RulesBtn";
-            this.RulesBtn.Size = new System.Drawing.Size(290, 63);
+            this.RulesBtn.Size = new System.Drawing.Size(290, 64);
             this.RulesBtn.TabIndex = 2;
             this.RulesBtn.Text = "RULES";
             this.RulesBtn.UseVisualStyleBackColor = false;
@@ -76,6 +75,7 @@ namespace connect4UI
             this.PvPStartBtn.Name = "PvPStartBtn";
             this.PvPStartBtn.Size = new System.Drawing.Size(358, 77);
             this.PvPStartBtn.TabIndex = 3;
+            this.PvPStartBtn.Tag = "";
             this.PvPStartBtn.Text = "2 Players";
             this.PvPStartBtn.UseVisualStyleBackColor = false;
             this.PvPStartBtn.Click += new System.EventHandler(this.StartBtn_Click);
@@ -100,9 +100,7 @@ namespace connect4UI
             // 
             // lblCredits
             // 
-            this.lblCredits.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCredits.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblCredits.AutoSize = true;
             this.lblCredits.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblCredits.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -111,9 +109,9 @@ namespace connect4UI
             this.lblCredits.Margin = new System.Windows.Forms.Padding(30, 20, 30, 20);
             this.lblCredits.Name = "lblCredits";
             this.lblCredits.Padding = new System.Windows.Forms.Padding(60, 0, 60, 0);
-            this.lblCredits.Size = new System.Drawing.Size(1103, 43);
+            this.lblCredits.Size = new System.Drawing.Size(805, 43);
             this.lblCredits.TabIndex = 7;
-            this.lblCredits.Text = "Team DevOOPS: Andrei Laqui and Heather-may Howse";
+            this.lblCredits.Text = "Andrei Laqui and Heather-may Howse";
             this.lblCredits.Visible = false;
             this.lblCredits.Click += new System.EventHandler(this.lblCredits_Click);
             // 
@@ -123,13 +121,13 @@ namespace connect4UI
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Controls.Add(this.lblCredits);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(328, 19);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(545, 261);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(100, 10, 190, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1242, 172);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(922, 80);
             this.flowLayoutPanel1.TabIndex = 8;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint_1);
             // 
@@ -146,6 +144,7 @@ namespace connect4UI
             this.HardAiStartBtn.Name = "HardAiStartBtn";
             this.HardAiStartBtn.Size = new System.Drawing.Size(358, 80);
             this.HardAiStartBtn.TabIndex = 8;
+            this.HardAiStartBtn.Tag = "";
             this.HardAiStartBtn.Text = "Hard AI";
             this.HardAiStartBtn.UseVisualStyleBackColor = false;
             this.HardAiStartBtn.Click += new System.EventHandler(this.StartBtn_Click);
@@ -163,6 +162,7 @@ namespace connect4UI
             this.EasyAiStartBtn.Name = "EasyAiStartBtn";
             this.EasyAiStartBtn.Size = new System.Drawing.Size(358, 83);
             this.EasyAiStartBtn.TabIndex = 9;
+            this.EasyAiStartBtn.Tag = "";
             this.EasyAiStartBtn.Text = "Easy AI";
             this.EasyAiStartBtn.UseVisualStyleBackColor = false;
             this.EasyAiStartBtn.Click += new System.EventHandler(this.StartBtn_Click);
@@ -170,9 +170,11 @@ namespace connect4UI
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(200, 100);
             this.flowLayoutPanel2.TabIndex = 9;
+            this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint_1);
             // 
             // tableLayoutPanel1
             // 
@@ -202,13 +204,14 @@ namespace connect4UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Navy;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::connect4UI.Properties.Resources.connect4titlebanner;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1898, 1024);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimizeBox = false;
             this.Name = "Title";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -224,11 +227,6 @@ namespace connect4UI
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
-
-        private void lblCredits_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
 

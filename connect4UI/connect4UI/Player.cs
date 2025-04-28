@@ -3,136 +3,149 @@ using System.Drawing;
 using System.Windows.Forms;
 using connect4UI;
 
-
-public interface IPlayer
+namespace connect4UI
 {
-    string Name { get; }
-    Color TokenColor { get; }
-    int Score { get; set; }
-    int MakeMove(Button[,] board); //return column player wants to put their token
-}
-
-
-public abstract class Player : IPlayer
-{
-    public string Name { get; }
-    public Color TokenColor { get; }
-    public int Score { get; set; }
-
-    protected Player(string name, Color col)
+    public interface IPlayer
     {
-        Name = name;
-        TokenColor = col;
-        Score = 0; // no need for score, it will be set to 0 by default
+        string Name { get; }
+        Color TokenColor { get; }
+
+        Bitmap TokenImage { get; }
+        int Score { get; set; }
+        int MakeMove(Button[,] board); //return column player wants to put their token
     }
 
-    public abstract int MakeMove(Button[,] board); //need abstract so human and AI can implement their different logic
-}
 
-
-public class HumanPlayer : Player
-{
-    public HumanPlayer(string name, Color col) : base(name, col) { }
-
-    public override int MakeMove(Button[,] board)
+    public abstract class Player : IPlayer
     {
-        throw new NotImplementedException("Human moves are handled by UI event."); //handled by button click event handler
-    }
-}
+        public string Name { get; }
+        public Color TokenColor { get; }
 
-public class AIPlayer : Player
-{
-    public AIPlayer(string name, Color col) : base(name, col) { }
+        public Bitmap TokenImage { get; }
+        public int Score { get; set; }
 
-    public override int MakeMove(Button[,] board)
-    {
-        if (GameLogic.IsBoardEmpty(board))
+        protected Player(string name, Color col, Bitmap img)
         {
-            return 3;
-        }
-        
-        {
-            var randomColumn = new Random().Next(7);
-            return randomColumn; // simplest AI move is random pick
-        }
-    }
-}
-
-public class SmartAIPlayer : AIPlayer
-{
-    private static Random rnd = new Random(); // Reuse a single Random instance
-
-    public SmartAIPlayer(string name, Color col) : base(name, col) { }
-
-    public override int MakeMove(Button[,] board)
-    {
-
-        if (GameLogic.IsBoardEmpty(board))
-        {
-            return 3; // center column for first move advantage
+            Name = name;
+            TokenColor = col;
+            TokenImage = img;
         }
 
-        // Define opponent color
-        Color opponentColor = (TokenColor == Color.Red) ? Color.Yellow : Color.Red;
-
-        // Prioritize winning, blocking, or random moves
-        int column = FindWinningMove(board, TokenColor) ??
-                     FindWinningMove(board, opponentColor) ??
-                     ChooseRandomColumn(board);
-
-        return column;
+        public abstract int
+            MakeMove(Button[,] board); //need abstract so human and AI can implement their different logic
     }
 
-    private int? FindWinningMove(Button[,] board, Color color) //? indicates int can be null, useful to return null if no winning move is found
+    public class HumanPlayer : Player
     {
-        for (int col = 0; col < board.GetLength(1); col++)
+        public HumanPlayer(string name, Color col, Bitmap img) : base(name, col, img)
         {
-            if (IsValidMove(board, col) && SimulateMove(board, col, color))
+        }
+
+        public override int MakeMove(Button[,] board)
+        {
+            throw new NotImplementedException(
+                "Human moves are handled by UI event."); //handled by button click event handler
+        }
+    }
+    public class AIPlayer : Player
+    {
+        private static Random rnd = new Random();
+
+        public AIPlayer(string name, Color col, Bitmap img) : base(name, col, img)
+        {
+        }
+
+        // Basic AI move: choose random or first move advantage
+        public override int MakeMove(Button[,] board)
+        {
+            int? column = FirstMoveAdvantage(board) ?? ChooseRandomColumn(board);
+            return column.Value; // return a valid column
+        }
+
+        // Check if center column (3) is available for a first move advantage
+        protected int? FirstMoveAdvantage(Button[,] board)
+        {
+            if (board[5, 3].ForeColor == Color.Black)
             {
-                return col;
+                return 3; // AI prefers the center
             }
-        }
-        return null;
-    }
 
-    private bool SimulateMove(Button[,] board, int column, Color color)
-    {
-        for (int row = board.GetLength(0) - 1; row >= 0; row--)
+            return null;
+        }
+
+        // Choose a random valid column
+        protected int ChooseRandomColumn(Button[,] board)
         {
-            if (board[row, column].BackColor == Color.Black)
+            int column;
+            do
             {
-                board[row, column].BackColor = color; // simulate move 
-                bool isWinningMove = CheckWin(board, color); //check if it’s a winning move
-                board[row, column].BackColor = Color.Black;
-                ; // undo move and report back result
-                return isWinningMove;
-            }
+                column = rnd.Next(board.GetLength(1));
+            } while (!IsValidMove(board, column));
+
+            return column;
         }
-        return false;
-    }
 
-
-
-    private bool IsValidMove(Button[,] board, int column)
-    {
-        return board[0, column].BackColor == Color.Black; // make sure column isn’t full
-    }
-
-    private int ChooseRandomColumn(Button[,] board)
-    {
-        int column;
-        do
+        // Check if the column is valid (empty space on top)
+        protected bool IsValidMove(Button[,] board, int column)
         {
-            column = rnd.Next(board.GetLength(1));
-        } while (!IsValidMove(board, column));
-        return column;
+            return board[0, column].ForeColor == Color.Black;
+        }
     }
 
-
-
-    private bool CheckWin(Button[,] board, Color color)
+    public class SmartAIPlayer : AIPlayer
     {
-        return GameLogic.CheckWin(board, color);
+        public SmartAIPlayer(string name, Color col, Bitmap img) : base(name, col, img)
+        {
+        }
+
+        // Override MakeMove to add smarter logic: prioritize winning, blocking
+        public override int MakeMove(Button[,] board)
+        {
+            Color opponentColor = (TokenColor == Color.Red) ? Color.Yellow : Color.Red;
+
+            // First try to win, then block, then randomly choose
+            int? column = FindWinningMove(board, TokenColor) ?? // Winning move for the AI
+                          FindWinningMove(board, opponentColor) ?? // Blocking the opponent
+                          FirstMoveAdvantage(board) ?? // First move advantage (center preference)
+                          ChooseRandomColumn(board); // Random if nothing else
+
+            return column.Value;
+        }
+        // Find a winning move for a specific color
+        private int? FindWinningMove(Button[,] board, Color color)
+        {
+            for (int col = 0; col < board.GetLength(1); col++)
+            {
+                if (IsValidMove(board, col) && SimulateMove(board, col, color))
+                {
+                    return col; // return column if it leads to a win
+                }
+            }
+
+            return null;
+        }
+
+        // Simulate a move for a specific color and check if it results in a win
+        private bool SimulateMove(Button[,] board, int column, Color color)
+        {
+            for (int row = board.GetLength(0) - 1; row >= 0; row--)
+            {
+                if (board[row, column].ForeColor == Color.Black)
+                {
+                    board[row, column].ForeColor = color; // simulate the move
+                    bool isWinningMove = CheckWin(board, color);
+                    board[row, column].ForeColor = Color.Black; // undo the move
+                    return isWinningMove;
+                }
+            }
+            return false;
+        }
+        // Check if the move results in a win
+        private bool CheckWin(Button[,] board, Color color)
+        {
+            return GameLogic.CheckWin(board, color);
+        }
+
     }
 }
 

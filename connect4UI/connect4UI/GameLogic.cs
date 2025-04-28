@@ -9,19 +9,6 @@ namespace connect4UI
         //AL - these functions need parameter for the board and color
         //since they moved to a static class from originally being inside pvp
         //they do not have access to the board and color in pvp
-        public static bool IsBoardEmpty(Button[,] board)
-        {
-            for (var row = 0; row < board.GetLength(0); row++)
-            {
-                for (var col = 0; col < board.GetLength(1); col++)
-                {
-                    if (board[row, col].BackColor != Color.Black)
-                        return false;
-                }
-            }
-            return true;
-        }
-
         public static bool CheckWin(Button[,] board, Color color)
         {
             return CheckHorizontalWin(board, color) ||
@@ -36,10 +23,10 @@ namespace connect4UI
             {
                 for (int col = 0; col <= board.GetLength(1) - 4; col++)
                 {
-                    if (board[row, col].BackColor == color &&
-                        board[row, col + 1].BackColor == color &&
-                        board[row, col + 2].BackColor == color &&
-                        board[row, col + 3].BackColor == color)
+                    if (board[row, col].ForeColor == color &&
+                        board[row, col + 1].ForeColor == color &&
+                        board[row, col + 2].ForeColor == color &&
+                        board[row, col + 3].ForeColor == color)
                     {
                         return true;
                     }
@@ -55,10 +42,10 @@ namespace connect4UI
             {
                 for (int row = 0; row <= board.GetLength(0) - 4; row++)
                 {
-                    if (board[row, col].BackColor == color &&
-                        board[row + 1, col].BackColor == color &&
-                        board[row + 2, col].BackColor == color &&
-                        board[row + 3, col].BackColor == color)
+                    if (board[row, col].ForeColor == color &&
+                        board[row + 1, col].ForeColor == color &&
+                        board[row + 2, col].ForeColor == color &&
+                        board[row + 3, col].ForeColor == color)
                     {
                         return true;
                     }
@@ -78,25 +65,25 @@ namespace connect4UI
             {
                 for (int col = 0; col <= cols - 4; col++) // start col 0 up to total-4
                 {
-                    if (board[row, col].BackColor == color &&
-                        board[row + 1, col + 1].BackColor == color &&
-                        board[row + 2, col + 2].BackColor == color &&
-                        board[row + 3, col + 3].BackColor == color)
+                    if (board[row, col].ForeColor == color &&
+                        board[row + 1, col + 1].ForeColor == color &&
+                        board[row + 2, col + 2].ForeColor == color &&
+                        board[row + 3, col + 3].ForeColor == color)
                     {
                         return true;
                     }
                 }
             }
 
-            // check for diagonal down-left (/) wins
+            // check for diagonal down-left wins
             for (int row = 0; row <= rows - 4; row++) // start row 0 up to total-4
             {
-                for (int col = 3; col < cols; col++) // start from col=3 until no more cols
+                for (int col = 3; col < cols; col++) 
                 {
-                    if (board[row, col].BackColor == color &&
-                        board[row + 1, col - 1].BackColor == color &&
-                        board[row + 2, col - 2].BackColor == color &&
-                        board[row + 3, col - 3].BackColor == color)
+                    if (board[row, col].ForeColor == color &&
+                        board[row + 1, col - 1].ForeColor == color &&
+                        board[row + 2, col - 2].ForeColor == color &&
+                        board[row + 3, col - 3].ForeColor == color)
                     {
                         return true;
                     }
@@ -105,16 +92,15 @@ namespace connect4UI
 
             return false; // no diagonal win found
         }
-
         public static bool CheckDraw(Button[,] board)
         {
             foreach (var cell in board)
             {
-                if (cell.BackColor == Color.Black) return false; // exit as soon as there is an unplayed slot
+                if (cell.ForeColor == Color.Black) return false; // exit as soon as there is an unplayed slot
             }
             return true; // all slots are occupied, therefore a draw
         }
-
+        
     }
 
 }
